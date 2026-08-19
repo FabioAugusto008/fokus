@@ -3,6 +3,7 @@ import { Image } from "react-native";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import { FokusButton } from "../components/FokusButton";
 import { ActionButton } from "../components/ActionButton";
+import { Timer } from "../components/Timer";
 
 const pomodoro = [
   {
@@ -45,9 +46,7 @@ const [timerType, setTimerType] = useState(pomodoro[0])
           ))}
         </View>
 
-        <Text style={styles.timer}>
-          { new Date(timerType.initialValue * 1000).toLocaleTimeString('pt-BR', { minute: '2-digit', second: '2-digit'}) }
-        </Text>
+        <Timer totalSecond={timerType.initialValue} />
 
         <FokusButton />
 
@@ -86,12 +85,6 @@ const [timerType, setTimerType] = useState(pomodoro[0])
       flexDirection: 'row',
       justifyContent: 'space-evenly',
       alignItems: 'center',
-    },
-    timer: {
-      fontSize: 54,
-      color: '#FFF',
-      fontWeight: 'bold',
-      textAlign: 'center',
     },
     footer: {
       width: '80%'
