@@ -1,56 +1,69 @@
-import { Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import TaskItem from "../../components/TaskItem";
 import { FokusButton } from "../../components/FokusButton";
 import { IconPlus } from "../../components/Icons";
-import { StyleSheet } from "react-native";
 import { router } from "expo-router";
+import useTaskContext from "../../components/context/useTaskContext";
 
 export default function Tasks() {
-    return (
-        <View style={styles.container}>
-            <View style={styles.wrapper}>
-                <Text style={styles.text}>
-                    Lista de Tarefas:
-                </Text>
-                <View style={styles.inner}>
-                    <TaskItem
-                        completed
-                        text="Estudar React"
-                    />
-                    <TaskItem
 
-                        text="Estudar React Native"
-                    />
-                </View>
-                <FokusButton
-                    outline
-                    title="Adicionar Nova Tarefa"
-                    icon={<IconPlus />}
-                    onPress={() => router.navigate('/add-task')}
+    const { tasks } = useTaskContext()
+
+    return (<View style={styles.container}>
+        <View style={styles.wrapper} >
+
+            <View style={styles.inner}>
+                {/* {tasks.map(t => {
+                    return (
+                        <TaskItem
+                            completed={t.completed}
+                            text={t.description}
+                            key={t.id}
+                        />
+                    )
+                })} */}
+                <FlatList
+                    data={tasks}
+                    renderItem={({ item }) => <TaskItem
+                        completed={item.completed}
+                        text={item.description}
+                        key={item.id}
+                    />}
+                    keyExtractor={item => item.id}
+                    ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
+                    ListHeaderComponent={<Text style={styles.text}>Lista de tarefas:</Text>}
+                    ListFooterComponent={<View style={{ marginTop: 16 }}>
+                        <FokusButton
+                            title="Adicionar nova tarefa"
+                            icon={<IconPlus outline />}
+                            outline
+                            onPress={() => router.navigate('/add-task')}
+                        />
+                    </View>}
                 />
             </View>
+
         </View>
-    );
+    </View>)
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#021121",
-        alignItems: 'center',
-        gap: 40,
+        backgroundColor: '#021123',
+        alignItems: 'center'
     },
-    wrapper:{
+    wrapper: {
         gap: 40,
         width: '90%'
     },
     text: {
         textAlign: 'center',
         color: '#FFF',
-        fontSize: 26
+        fontSize: 26,
+        marginBottom: 16
     },
     inner: {
         gap: 8
-    },
-    
+    }
 })
