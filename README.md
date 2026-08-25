@@ -1,50 +1,120 @@
-# Welcome to your Expo app 👋
+# Fokus
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+<p align="center">
+  <img src="./assets/images/logo.png" alt="Logo Fokus" width="180" />
+</p>
 
-## Get started
+Aplicativo mobile de produtividade inspirado na técnica Pomodoro, criado com Expo e React Native. O projeto combina um temporizador de foco com uma lista de tarefas persistente, ajudando a organizar o que precisa ser feito e a manter ciclos de concentração, pausas curtas e pausas longas.
 
-1. Install dependencies
+## Sobre o projeto
 
-   ```bash
-   npm install
-   ```
+O Fokus foi desenvolvido como um app fictício e sem fins comerciais, com base em estudos da Alura. A aplicação usa navegação por rotas com Expo Router, menu lateral com Drawer Navigator e armazenamento local para manter as tarefas salvas entre sessões.
 
-2. Start the app
+## Funcionalidades
 
-   ```bash
-   npx expo start
-   ```
+- Tela inicial com chamada para iniciar o fluxo de produtividade.
+- Temporizador Pomodoro com três modos:
+  - Foco: 25 minutos.
+  - Pausa curta: 5 minutos.
+  - Pausa longa: 15 minutos.
+- Controle de iniciar e pausar o timer.
+- Lista de tarefas com cadastro, edição, conclusão e exclusão.
+- Persistência local das tarefas usando AsyncStorage.
+- Navegação por menu lateral entre Timer e Lista de tarefas.
 
-In the output, you'll find options to open the app in a
+## Preview
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+<p align="center">
+  <img src="./assets/images/home.png" alt="Tela inicial do Fokus" width="220" />
+  <img src="./assets/images/pomodoro.png" alt="Ilustração do modo foco" width="220" />
+</p>
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Tecnologias
 
-## Get a fresh project
+- [Expo](https://expo.dev/)
+- [Expo Router](https://docs.expo.dev/router/introduction/)
+- [React Native](https://reactnative.dev/)
+- [React](https://react.dev/)
+- [AsyncStorage](https://react-native-async-storage.github.io/async-storage/)
+- [React Navigation](https://reactnavigation.org/)
 
-When you're ready, run:
+## Requisitos
+
+- Node.js 20.19.x ou superior.
+- npm.
+- Expo Go no celular ou um emulador Android/iOS configurado.
+
+> O projeto usa Expo SDK 54, que trabalha com React Native 0.81 e React 19.1.
+
+## Como executar
+
+Clone o repositório e instale as dependências:
 
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Inicie o servidor de desenvolvimento:
 
-## Learn more
+```bash
+npm start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+Depois, escolha uma das opções exibidas no terminal:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- abrir no Expo Go pelo QR Code;
+- rodar no emulador Android;
+- rodar no simulador iOS;
+- abrir a versão web.
 
-## Join the community
+Também é possível iniciar diretamente por plataforma:
 
-Join our community of developers creating universal apps.
+```bash
+npm run android
+npm run ios
+npm run web
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Scripts disponíveis
+
+| Script | Descrição |
+| --- | --- |
+| `npm start` | Inicia o servidor do Expo. |
+| `npm run android` | Abre o app no Android. |
+| `npm run ios` | Abre o app no iOS. |
+| `npm run web` | Abre o app no navegador. |
+| `npm run lint` | Executa a verificação de lint do Expo. |
+
+## Estrutura
+
+```text
+app/
+  _layout.jsx          # Configuração de navegação e provider global
+  index.jsx            # Tela inicial
+  pomodoro.jsx         # Temporizador Pomodoro
+  add-task/            # Cadastro de tarefas
+  edit-task/           # Edição de tarefas
+  tasks/               # Lista de tarefas
+
+components/
+  ActionButton/        # Botões dos modos do timer
+  FokusButton/         # Botão principal reutilizável
+  Icons/               # Ícones usados na interface
+  TaskItem/            # Item da lista de tarefas
+  Timer/               # Formatação e exibição do contador
+  context/             # Contexto e persistência das tarefas
+
+assets/
+  fonts/               # Fontes do projeto
+  images/              # Imagens, logos e ícones
+```
+
+## Armazenamento local
+
+As tarefas são salvas no dispositivo com a chave `fokus-tasks`, usando `@react-native-async-storage/async-storage`. Isso permite fechar e abrir o app mantendo a lista cadastrada.
+
+## Licença e créditos
+
+Projeto fictício, sem fins comerciais, desenvolvido para fins de estudo.
+
+Base visual e proposta educacional: Alura.
