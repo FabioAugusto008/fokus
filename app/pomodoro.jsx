@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Image, StyleSheet, Text, View, Pressable } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { FokusButton } from "../components/FokusButton";
 import { ActionButton } from "../components/ActionButton";
 import { Timer } from "../components/Timer";
